@@ -4,12 +4,22 @@ import Swap from "./pages/Swap";
 import Trade from "./pages/Trade";
 import Pools from "./pages/Pools";
 import { WalletConnect } from "./components/WalletConnect";
+import { getEnvironmentName, isProduction } from "./config/env";
+import "./styles/app.css";
 
 const App: React.FC = () => {
+  const environmentName = getEnvironmentName();
+  const isMainnet = isProduction();
+
   return (
     <div className="app-container">
       <header className="app-header">
-        <h1>Cypherpunk DeFi</h1>
+        <div className="app-branding">
+          <h1>Cypherpunk DeFi</h1>
+          <div className={`env-indicator ${isMainnet ? "production" : ""}`}>
+            {environmentName}
+          </div>
+        </div>
         <nav>
           <NavLink to="/">Home</NavLink>
           <NavLink to="/swap">Swap</NavLink>

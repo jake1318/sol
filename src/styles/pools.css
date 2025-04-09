@@ -1,0 +1,185 @@
+.pools-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.environment-indicator,
+.connection-status {
+  margin-bottom: 15px;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.connection-status {
+  font-size: 12px;
+  color: #666;
+}
+
+.env-tag {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  color: #555;
+  font-size: 12px;
+}
+
+.env-tag.production {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.status-message {
+  padding: 10px;
+  background-color: #e7f3ff;
+  border-left: 4px solid #2196f3;
+  margin-bottom: 15px;
+}
+
+.error-message {
+  padding: 10px;
+  background-color: #ffebee;
+  border-left: 4px solid #f44336;
+  margin-bottom: 15px;
+}
+
+.pool-selector {
+  margin-bottom: 20px;
+}
+
+.pool-selector select {
+  margin-left: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  min-width: 300px;
+}
+
+.pool-detail {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.pool-detail h3 {
+  margin-top: 0;
+  color: #2196f3;
+}
+
+.pool-actions {
+  margin-top: 20px;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  background: none;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tab-btn.active {
+  border-bottom: 2px solid #2196f3;
+  font-weight: bold;
+  color: #2196f3;
+}
+
+.tab-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.liquidity-form {
+  margin-top: 15px;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.liquidity-form h4 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.liquidity-form label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.liquidity-form input {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.input-helper {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.liquidity-form button {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  font-weight: 500;
+}
+
+.liquidity-form button:hover:not(:disabled) {
+  background-color: #0d8bf2;
+}
+
+.liquidity-form button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.liquidity-form p {
+  margin-bottom: 15px;
+  color: #666;
+}
+
+.wallet-note {
+  color: #ff9800;
+  font-style: italic;
+}
+
+.btn-small {
+  padding: 4px 8px;
+  font-size: 12px;
+  margin-right: 5px;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.btn-small:hover:not(:disabled) {
+  background-color: #e0e0e0;
+}
+
+.reward-info {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
