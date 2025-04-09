@@ -1,0 +1,20 @@
+// theme.scss
+$bg-color: #0a0a0a;
+$text-color: #e0e0e0;
+$accent-color: #0ff; // neon cyan
+$accent-color-2: #f0f; // neon magenta
+
+body {
+  background: $bg-color;
+  color: $text-color;
+}
+
+@mixin neon-glow($color: $accent-color) {
+  text-shadow: 0 0 5px $color, 0 0 10px $color;
+}
+
+h1,
+h2,
+h3 {
+  @include neon-glow($accent-color);
+}
