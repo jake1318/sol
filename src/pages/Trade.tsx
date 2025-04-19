@@ -1,105 +1,79 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useJupiterTrigger } from "../hooks/useJupiterTrigger";
 
 const Trade: React.FC = () => {
-  const [inputMint, setInputMint] = useState(
+  const [inMint, setInMint] = useState(
     "So11111111111111111111111111111111111111112"
   );
-  const [outputMint, setOutputMint] = useState(
+  const [outMint, setOutMint] = useState(
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
   );
-  const [sellAmount, setSellAmount] = useState("");
-  const [buyAmount, setBuyAmount] = useState("");
+  const [sell, setSell] = useState("");
+  const [buy, setBuy] = useState("");
   const [expiry, setExpiry] = useState("");
-  const { placeLimitOrder, loading } = useJupiterTrigger();
+  const { placeOrder, loading } = useJupiterTrigger();
 
-  const handlePlaceOrder = async () => {
+  const handle = async () => {
     try {
-      const sellAmt = parseFloat(sellAmount);
-      const buyAmt = parseFloat(buyAmount);
-      if (isNaN(sellAmt) || isNaN(buyAmt) || sellAmt <= 0 || buyAmt <= 0) {
-        alert("Enter valid amounts");
-        return;
-      }
-      const expiryNum = expiry ? parseInt(expiry) : undefined;
-      const result = await placeLimitOrder(
-        inputMint,
-        outputMint,
-        sellAmt,
-        buyAmt,
-        expiryNum
+      const res = await placeOrder(
+        inMint,
+        outMint,
+        parseFloat(sell),
+        parseFloat(buy),
+        expiry ? parseInt(expiry) : undefined
       );
-      alert(
-        `Limit order placed! Order PubKey: ${result.order}\nTxID: ${result.txid}`
-      );
-    } catch (err: any) {
-      alert(`Order placement failed: ${err.message}`);
+      alert(`Order ${res.order} placed! Tx: ${res.tx}`);
+    } catch (e: any) {
+      alert("Order failed: " + e.message);
     }
   };
 
   return (
     <div className="trade-page">
-      <h2>Place Limit Order</h2>
-      <div className="trade-form">
-        <label>
-          Sell Token:
-          <select
-            value={inputMint}
-            onChange={(e) => setInputMint(e.target.value)}
-          >
-            <option value="So11111111111111111111111111111111111111112">
-              SOL
-            </option>
-            <option value="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v">
-              USDC
-            </option>
-          </select>
-        </label>
-        <label>
-          Buy Token:
-          <select
-            value={outputMint}
-            onChange={(e) => setOutputMint(e.target.value)}
-          >
-            <option value="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v">
-              USDC
-            </option>
-            <option value="So11111111111111111111111111111111111111112">
-              SOL
-            </option>
-          </select>
-        </label>
-        <label>
-          Sell Amount:
-          <input
-            type="number"
-            value={sellAmount}
-            onChange={(e) => setSellAmount(e.target.value)}
-            placeholder="0.0"
-          />
-        </label>
-        <label>
-          Minimum Buy Amount:
-          <input
-            type="number"
-            value={buyAmount}
-            onChange={(e) => setBuyAmount(e.target.value)}
-            placeholder="0.0"
-          />
-        </label>
-        <label>
-          Expiry (Unix time, optional):
-          <input
-            type="number"
-            value={expiry}
-            onChange={(e) => setExpiry(e.target.value)}
-            placeholder="e.g. 1712500000"
-          />
-        </label>
-        <button onClick={handlePlaceOrder} disabled={loading}>
-          {loading ? "Placing Order…" : "Place Order"}
-        </button>
-      </div>
+      <h2>Limit Order</h2>
+      <label>
+        Sell:
+        <input
+          value={sell}
+          onChange={(e) => setSell(e.target.value)}
+          placeholder="0.0"
+        />
+        <select value={inMint} onChange={(e) => setInMint(e.target.value)}>
+          <option value="So11111111111111111111111111111111111111112">
+            SOL
+          </option>
+          <option value="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v">
+            USDC
+          </option>
+        </select>
+      </label>
+      <label>
+        Buy Min:
+        <input
+          value={buy}
+          onChange={(e) => setBuy(e.target.value)}
+          placeholder="0.0"
+        />
+        <select value={outMint} onChange={(e) => setOutMint(e.target.value)}>
+          <option value="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v">
+            USDC
+          </option>
+          <option value="So11111111111111111111111111111111111111112">
+            SOL
+          </option>
+        </select>
+      </label>
+      <label>
+        Expiry (Unix):
+        <input
+          value={expiry}
+          onChange={(e) => setExpiry(e.target.value)}
+          placeholder="1712500000"
+        />
+      </label>
+      <button onClick={handle} disabled={loading}>
+        {loading ? "Placing…" : "Place Order"}
+      </button>
     </div>
   );
 };

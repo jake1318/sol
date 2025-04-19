@@ -1,4 +1,4 @@
-// Polyfill Node’s Buffer in the browser
+// Polyfill Node buffer in the browser
 import { Buffer } from "buffer";
 (window as any).Buffer = Buffer;
 
@@ -18,7 +18,6 @@ import "./styles/globals.scss";
 import "./styles/theme.scss";
 import "./styles/components.scss";
 
-const network = WalletAdapterNetwork.Mainnet;
 const wallets = [
   new PhantomWalletAdapter(),
   new SolflareWalletAdapter(),
