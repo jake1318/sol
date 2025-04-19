@@ -1,3 +1,4 @@
+// src/App.tsx
 import { Routes, Route, NavLink } from "react-router-dom";
 import Home from "./pages/Home";
 import Swap from "./pages/Swap";
@@ -16,15 +17,17 @@ const App: React.FC = () => {
       <header className="app-header">
         <div className="app-branding">
           <h1>Cypherpunk DeFi</h1>
-          <div className={`env-indicator ${isMainnet ? "production" : ""}`}>
+          <span className={`env-indicator ${isMainnet ? "production" : ""}`}>
             {environmentName}
-          </div>
+          </span>
         </div>
         <nav>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/" end>
+            Home
+          </NavLink>
           <NavLink to="/swap">Swap</NavLink>
           <NavLink to="/trade">DEX</NavLink>
-          <NavLink to="/pools">LP Pools</NavLink>
+          <NavLink to="/pools">LP Pools</NavLink>
         </nav>
         <WalletConnect />
       </header>
