@@ -1,0 +1,83 @@
+/* src/styles/app.css */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #121212;
+  border-bottom: 1px solid #333;
+}
+
+.app-branding {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.env-indicator {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  background-color: #333;
+  border-radius: 4px;
+}
+
+.env-indicator.production {
+  background-color: #005500;
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+nav a:hover,
+nav a.active {
+  color: #00ff9d;
+}
+
+.wallet-btn {
+  padding: 0.5rem 1rem;
+  background-color: #222;
+  color: #00ff9d;
+  border: 1px solid #00ff9d;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wallet-btn:hover {
+  background-color: #00ff9d;
+  color: #000;
+}
+
+.app-main {
+  flex: 1;
+  padding: 2rem;
+}
+
+.home-page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.home-page h2 {
+  margin-bottom: 1.5rem;
+  color: #00ff9d;
+}
+
+.home-page p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
