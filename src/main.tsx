@@ -1,3 +1,7 @@
+// Polyfill Node’s Buffer in the browser
+import { Buffer } from "buffer";
+(window as any).Buffer = Buffer;
+
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import {
